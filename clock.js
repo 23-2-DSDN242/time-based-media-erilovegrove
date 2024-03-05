@@ -2,27 +2,29 @@
  * use p5.js to draw a clock on a 960x500 canvas
  */
 function draw_clock(obj) {
-  // draw your own clock here based on the values of obj:
-  //    obj.hours goes from 0-23
-  //    obj.minutes goes from 0-59
-  //    obj.seconds goes from 0-59
-  //    obj.millis goes from 0-999
-  //    obj.seconds_until_alarm is:
-  //        < 0 if no alarm is set
-  //        = 0 if the alarm is currently going off
-  //        > 0 --> the number of seconds until alarm should go off
-  background(50); //  beige
-  fill(200); // dark grey
-  textSize(40);
-  textAlign(CENTER, CENTER);
-  text("YOUR MAIN CLOCK CODE GOES HERE", width / 2, 200);
+  background(237, 224, 197); //  beige
 
+  let centerX = width / 2;
+  let centerY = height / 2;
+  let bigRadius = 200; // Radius of the big circle
+  let numCircles = 12; // Number of small circles
+  let angleStep = TWO_PI / numCircles; // Angle step between each small circle
 
-  fill(249, 140, 255);// pink
-  ellipse(width / 3, 350, 150);
-  fill(140, 255, 251) // blue
-  ellipse(width / 2, 350, 150);
-  fill(175, 133, 255); // purple
-  ellipse(width / 3 * 2, 350, 150);
+  // Draw the big circle
+  fill(83, 110, 88); // Dark green
+  noStroke();
+  ellipse(centerX, centerY, bigRadius * 2);
 
+  // Draw small circles around the big circle
+  let smallRadius = 20; // Radius of the small circles
+  for (let i = 0; i < numCircles; i++) {
+    let angle = i * angleStep; // Calculate the angle for this circle
+    let x = centerX + cos(angle) * (bigRadius - smallRadius); // Calculate x-coordinate
+    let y = centerY + sin(angle) * (bigRadius - smallRadius); // Calculate y-coordinate
+
+    // Draw the small circle
+    fill(255); // White color
+    ellipse(x, y, smallRadius * 2);
+  }
 }
+
