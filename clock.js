@@ -37,34 +37,123 @@
 // }
 
 
+// draw your own clock here based on the values of obj:
+    //    obj.hours goes from 0-23
+    //    obj.minutes goes from 0-59
+    //    obj.seconds goes from 0-59
+    //    obj.millis goes from 0-999
+    //    obj.seconds_until_alarm is:
+    //        < 0 if no alarm is set
+    //        = 0 if the alarm is currently going off
+    //        > 0 --> the number of seconds until alarm should go off
+
+   
 
 
 function draw_clock(obj) {
+
+   
+
+
+
+
   noStroke()
   angleMode (DEGREES);
   translate (width/2, height/2);
   ellipseMode (CENTER);
-  background (20);
-  fill (200);
-  let OpacityAm = 35;
+  background(39, 42, 59); 
+ 
+  fill(122, 163, 118); 
+  ellipse (0, 0, 350) //center
 
-  let blue = color (140, 255, 251, OpacityAm);
-  let purple = color (175, 133, 255, OpacityAm);
 
-  let minForLerp = map ( obj.minutes, 0, 59, 0, 1);
-  let colorOfOrb = lerpColor (blue, purple, minForLerp);
-
-  let sizeStep = 15;
-  let howManyCircles = obj.seconds;
-
-  fill (colorOfOrb);
-  for (let i = 0; i < howManyCircles; i++) {
-    ellipse (0,0, sizeStep*i);
+  if (obj.hours < 12) {
+    
+    hourHand = map(obj.hours, 0, 11, 0, 330); //330 is 11:00
+  } else {
+    hourHand = map(obj.hours, 12, 23, 0, 330); 
   }
-  fill ("#fae")
-  ellipse (0, 0, 50) //center
 
-  let hourHand = map (obj.hours, 0, 23, 0, 360)
+  
 
-  drawTriangles (100, 100, 20);
+  for(let i=0; i < 12; i ++){
+    rotate (360/12)
+    fill (56, 84, 53);
+    ellipse (0, -210, 15)
+  }
+ 
+
+
+  push();
+  rotate(hourHand);
+  fill (81, 207, 200);
+  ellipse(0, -210, 15);
+  pop();
+
+
+  //minutes
+
+  push ()
+  let flowerXpos = [0,40,90, 0, -50, -90, -30]
+  let flowerYpos = [0,40,-90,100, -50, 90, -30]
+  // this for loop draw the flowers
+  for(let i = 0; i <= 6; i++  ){
+    text(i,flowerXpos[i], flowerYpos[i]);
+  }
+
+
+for (let i=0; i<=6; i++) {
+  if (obj.minutes == i) {
+    fill (255);
+    text(i,flowerXpos[i], flowerYpos[i]);
+  }
 }
+  pop()
+
+
+  push()
+  fill (255);
+  text ((obj.minutes), -20, -20);
+  pop()
+
+
+
+  //seconds
+  let waterY = map (obj.millis, 0, 999, -100, 100);
+  ellipse (300, waterY, 20);
+
+push ()
+fill (158, 218, 230);
+rectMode (CORNERS);
+let waterfill = map (obj.seconds, 0, 59, 180, 70);
+rect(250, waterfill, 350, 180);
+
+  // rect (250, 50, waterfill);
+  // let waterfill = map (obj.seconds, 0, 59, 0, 100);
+  pop()
+
+  
+
+
+
+}
+
+
+
+//opacity cirles
+
+ // let OpacityAm = 35;
+
+  // let blue = color (140, 255, 251, OpacityAm);
+  // let purple = color (175, 133, 255, OpacityAm);
+
+  // let minForLerp = map ( obj.minutes, 0, 59, 0, 1);
+  // let colorOfOrb = lerpColor (blue, purple, minForLerp);
+
+  // let sizeStep = 15;
+  // let howManyCircles = map (obj.seconds, 0, 59, 20, 40);
+
+  // fill (colorOfOrb);
+  // for (let i = 0; i < howManyCircles; i++) {
+  //   ellipse (0,0, sizeStep*i);
+  // }
