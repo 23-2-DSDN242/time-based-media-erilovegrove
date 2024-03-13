@@ -10,8 +10,7 @@ Maeda clock imitation: I really challenged myself to make this clock work, and u
 
 
 ### 5/3/24
-![Sketch 2](assets/sketchno2.jpg)
-<img src="assets/sketchno2.jpg" alt="drawing" width="200"/>
+<img src="assets/sketchno2.jpg" alt="sketch2" width="500"/>
 I slightly adjusted my design to show time differently. The hours will be indicated by the 12 circles around the bigger circle. There will be numbers 0 - 59 placed on 59 flowers, where one will be highlighted depending on the minute. The seconds will be shown by the water rising in the watering can, and a water drop that will be dropping every second. I started doing some very basic coding.
 ![Preview 1](assets/preview1.jpg)
 
