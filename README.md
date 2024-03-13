@@ -10,14 +10,14 @@ Maeda clock imitation: I really challenged myself to make this clock work, and u
 
 
 5/3/24
-![Sketch 2](sketchno2.jpg)
+![Sketch 2](assets/sketchno2.jpg)
 I slightly adjusted my design to show time differently. The hours will be indicated by the 12 circles around the bigger circle. There will be numbers 0 - 59 placed on 59 flowers, where one will be highlighted depending on the minute. The seconds will be shown by the water rising in the watering can, and a water drop that will be dropping every second. I started doing some very basic coding.
-![Preview 1](preview1.jpg)
+![Preview 1](assets/preview1.jpg)
 
 7/3/24
 I did some basic coding to make 12 circles around the bigger circle, where one would light up depending on the hour. I used maps and angles to make the time AM and PM. 
-![Preview 2](preview2.jpg)
+![Preview 2](assets/preview2.jpg)
 
 12/3/24
 With some help, I have started to code numbers 0-59 that will keep track of the minutes. Nothing pretty at the moment, still getting a feel for the code. On the right, a dark green circle falls smoothly every second into a blue rectangle that increases every second. This will be the base for my watering can idea. 
-![Preview 3](preview3.jpg)
+![Preview 3](assets/preview3.jpg)
