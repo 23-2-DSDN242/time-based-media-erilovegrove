@@ -48,25 +48,54 @@
     //        > 0 --> the number of seconds until alarm should go off
 
    
+let raindrop; 
+let flower;
+let hourflowers = []
+let colourflowers = []
 
+function preload() {
+    // Load the image before setup()
+    raindrop = loadImage('assets/raindrop.png'); // Replace with the actual path to your image file
+    flower = loadImage('assets/flower.png')
+    for (let i = 0; i < 6; i++) {
+      hourflowers[i] = loadImage('assets/flower' + i + '.png'); // Assuming your images are named as flower0.png, flower1.png, etc.
+    }
+    for (let i = 0; i < 6; i++) {
+      colourflowers[i] = loadImage ('assets/colour' + i + '.png');
+    }
+  }
 
 function draw_clock(obj) {
-
-   
-
-
-
 
   noStroke()
   angleMode (DEGREES);
   translate (width/2, height/2);
   ellipseMode (CENTER);
-  background(39, 42, 59); 
- 
-  fill(122, 163, 118); 
+  background(15, 34, 38);
+  imageMode (CENTER) ;
+  
+  fill(97, 163, 126); 
   ellipse (0, 0, 350) //center
 
 
+  
+
+   for (let i = 0; i < 6; i++) {
+    push();
+    rotate(360 / 12 * i);
+    image(hourflowers[i], 0, -215, 35, 35);
+    image(hourflowers[i], 0, 215, 35, 35); // Adjust position and size as needed
+    pop();
+  }
+
+
+  // for(let i=0; i < 12; i ++){
+  //   rotate (360/12)
+  //   fill (56, 84, 53);
+  //   ellipse (0, -210, 15)
+  // }
+ 
+ let hourHand;
   if (obj.hours < 12) {
     
     hourHand = map(obj.hours, 0, 11, 0, 330); //330 is 11:00
@@ -76,28 +105,36 @@ function draw_clock(obj) {
 
   
 
-  for(let i=0; i < 12; i ++){
-    rotate (360/12)
-    fill (56, 84, 53);
-    ellipse (0, -210, 15)
-  }
- 
-
-
-  push();
+  for (let i = 0; i < 6; i ++) {
+  
   rotate(hourHand);
-  fill (81, 207, 200);
-  ellipse(0, -210, 15);
-  pop();
+    if (obj.hours === i) {
+    
+  // fill (81, 207, 200);
+  // ellipse(0, -210, 15);
+  rotate(360 / 12 * i);
+  image (colourflowers[i],0, -215, 35, 35 );
+  image(colourflowers[i], 0, 215, 35, 35);
+  }
 
+  
+}
 
   //minutes
+
+
 
   push ()
   let flowerXpos = [0,40,90, 0, -50, -90, -30]
   let flowerYpos = [0,40,-90,100, -50, 90, -30]
   // this for loop draw the flowers
-  for(let i = 0; i <= 6; i++  ){
+
+
+  for(let i = 0; i <= 7; i++  ){
+    if (flower) {
+      image(flower, flowerXpos[i] - 20, flowerYpos[i] - 25, 50, 50); // Adjust position and size as needed
+    }
+  
     text(i,flowerXpos[i], flowerYpos[i]);
   }
 
@@ -119,8 +156,10 @@ for (let i=0; i<=6; i++) {
 
 
   //seconds
-  let waterY = map (obj.millis, 0, 999, -100, 100);
-  ellipse (300, waterY, 20);
+  let waterY = map (obj.millis, 0, 999, -100, 150);
+  if (raindrop) {
+    image(raindrop, 280, waterY, 20, 20); // Adjust position and size as needed
+  }
 
 push ()
 fill (158, 218, 230);
@@ -133,8 +172,6 @@ rect(250, waterfill, 350, 180);
   pop()
 
   
-
-
 
 }
 
