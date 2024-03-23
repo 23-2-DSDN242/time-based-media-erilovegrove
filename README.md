@@ -21,7 +21,7 @@ Once comfortable, I translated my sketch into basic code foundations.
 
 Experimenting with Illustrator, I created visuals for my clock, focusing particularly on crafting the flowers. This part of the process was enjoyable as it allowed me to bring my design to life.
 
-![Preview 4](assets/illustrator.png)
+<img src="assets/illustrator.png" alt="illustratorpage" width="500"/>
 
 Finally, I incorporated an alarm feature into the clock, which causes the flowers to blink when activated.
 
